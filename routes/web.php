@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Facades\Voyager;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,13 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/CustomRegister', [App\Http\Controllers\AuthController::class, 'indexRegister'])->name('Custom.register');
+Route::get('/CustomLogin', [App\Http\Controllers\AuthController::class, 'indexLogin'])->name('Custom.login');
+
+Route::post('/formateurs', [App\Http\Controllers\FormateurController::class, 'index'])->name('formateurs');
+Route::post('/CustomRegister', [App\Http\Controllers\AuthController::class, 'indexRegister'])->name('Custom.register');
+Route::post('/CustomRegister', [App\Http\Controllers\AuthController::class, 'register'])->name('register.custom');
+
+Route::post('/CustomLogin', [App\Http\Controllers\AuthController::class, 'indexLogin'])->name('Custom.login');
+Route::post('/CustomLogin', [App\Http\Controllers\AuthController::class, 'login'])->name('login.custom');
+
